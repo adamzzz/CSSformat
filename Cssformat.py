@@ -18,7 +18,7 @@ class CssformatCommand(sublime_plugin.TextCommand):
         str = re.compile(r',\s*').subn(r', ', str)[0]
         str = re.compile(r'\s*}').subn(r'}\n', str)[0]
         str = re.compile(r'}\s*(.+)').subn(r'}\n\1', str)[0]
-        str = re.compile(r'\n\s*([^:\n]+):\s*').subn(r'\n' + indent_characters + r'\1: ', str)[0]
+        str = re.compile(r'\n\s*([^{\n]+):\s*').subn(r'\n' + indent_characters + r'\1: ', str)[0]
         str = re.compile(r'([A-z0-9\)])}').subn(r'\1;\n}', str)[0]
 
         line_endings = self.view.settings().get('default_line_ending')
